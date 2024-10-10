@@ -1,3 +1,3 @@
-public class CentroGalactico {
+public class CentroGalactico extends Planeta {
     
 }

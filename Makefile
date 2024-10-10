@@ -2,7 +2,7 @@
 
 # Variables
 JAVAC = javac
-JFLAGS = -source 23 -target 23
+JFLAGS = -source 23 -target 23 -d Clases
 SRC = NoJavaSky.java Planeta.java Helado.java Oceanico.java Radiactivo.java \
       Volcanico.java CentroGalactico.java MapaGalactico.java \
       tieneAsentamientos.java Nave.java Jugador.java
@@ -16,4 +16,4 @@ all: $(CLASSES)
 
 # Limpiar los archivos .class
 clean:
-	rm -f *.class
+	rm -f Clases/*.class
