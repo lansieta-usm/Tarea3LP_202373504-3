@@ -37,17 +37,15 @@ public abstract class Planeta {
         return;
     }
 
-    /*
     public boolean visitar(Jugador jugador){
-    
+        return true;
     }
 
     public int extraerRecursos(int tipo){
-
+        return 0;
     }
 
     public boolean salir(){
-
+        return true;
     }
-    */
 }

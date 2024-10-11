@@ -2,6 +2,11 @@ public class Jugador {
     private float unidadesEnergiaProteccion;
     private float eficienciaEnergiaProteccion;
 
+    public Jugador(){
+        this.unidadesEnergiaProteccion = 100;
+        this.eficienciaEnergiaProteccion = 0;
+    }
+
     public void recargarEnergiaProteccion(int sodio){
         return;
     }
