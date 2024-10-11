@@ -11,7 +11,6 @@ public class Jugador {
         return;
     }
 
-    /*
     public float get_unidadesEnergiaProteccion(){ // Getter Unidades Energía Protección
         return this.unidadesEnergiaProteccion;
     }
@@ -26,5 +25,4 @@ public class Jugador {
         this.eficienciaEnergiaProteccion = eep;
         return;
     }
-    */
 }
