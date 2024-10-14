@@ -15,3 +15,4 @@ Desde la consola, usando los siguientes comandos:
 Instrucciones de ejecucion:
 
 Consideraciones adicionales:
+Se cambió la generación de la profundidad en la clase Oceanico de modo que la máxima profundidad que se pueda generar sea de 100 mts. Esto debido a la existencia de valores negativos en la protección del exotraje del jugador tras visitar un planeta oceánico con una profundidad muy grande (>223).

@@ -2,13 +2,28 @@ public class Nave {
     private float unidadesCombustible;
     private float eficienciaPropulsor;
 
+    public Nave(){ // Constructor
+        this.unidadesCombustible = 100;
+        this.eficienciaPropulsor = 0;
+    }
+
     public float get_unidadesCombustible(){ // Getter Unidades Combustible
         return this.unidadesCombustible;
     }
     public float get_eficienciaPropulsor(){ // Getter Eficiencia Propulsor
         return this.eficienciaPropulsor;
     }
-
+    /*
+    public void set_unidadesCombustible(float combustible){ // Setter Unidades Combustible
+        this.unidadesCombustible = combustible;
+        return;
+    }
+    public void set_eficienciaPropulsor(float eficiencia){ // Setter Eficiencia Propulsor
+        this.eficienciaPropulsor = eficiencia;
+        return;
+    }
+    */
+    
     public boolean viajarPlaneta(MapaGalactico MG, int direccion, int tamanoSalto){
         int pos = MG.get_posicion();
         float comb = get_unidadesCombustible();
@@ -53,20 +68,4 @@ public class Nave {
     public void recargarPropulsores(int hidrogeno){
         return;
     }
-
-    public Nave(){
-        this.unidadesCombustible = 100;
-        this.eficienciaPropulsor = 0;
-    }
-
-    /*
-    public void set_unidadesCombustible(float combustible){ // Setter Unidades Combustible
-        this.unidadesCombustible = combustible;
-        return;
-    }
-    public void set_eficienciaPropulsor(float eficiencia){ // Setter Eficiencia Propulsor
-        this.eficienciaPropulsor = eficiencia;
-        return;
-    }
-    */
 }

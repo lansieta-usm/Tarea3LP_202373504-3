@@ -20,11 +20,13 @@ public class Radiactivo extends Planeta {
         int cristales = (int)(0.2 * 4 * Math.PI * radio * radio);
         int flores = (int)(0.2 * 4 * Math.PI * radio * radio);
         int consumo = (int)(0.3 * this.radiacion);
+        String id = "Radiactivo";
 
         set_radio(radio);
         set_cristalesHidrogeno(cristales);
         set_floresSodio(flores);
         set_consumoEnergia(consumo);
+        set_identificador(id);
         this.uranio = (int)(0.25 * 4 * Math.PI * radio * radio);
 
         return;

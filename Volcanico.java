@@ -20,11 +20,13 @@ public class Volcanico extends Planeta {
         int cristales = (int)(0.3 * 4 * Math.PI * radio * radio);
         int flores = 0;
         int consumo = (int)(0.08 * this.temperatura);
+        String id = "Volcanico";
 
         set_radio(radio);
         set_cristalesHidrogeno(cristales);
         set_floresSodio(flores);
         set_consumoEnergia(consumo);
+        set_identificador(id);
         this.platino = (int)((0.25 * 4 * Math.PI * radio * radio) - (20.5 * this.temperatura));
 
         return;

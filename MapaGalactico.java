@@ -6,6 +6,11 @@ public class MapaGalactico {
     private int posicion;
     private boolean hayCG = false; // Aún no hay Centro Galáctico
 
+    public MapaGalactico(){ // Constructor
+        this.planetas = new ArrayList<>();
+        this.posicion = 0;
+    }
+
     public List<Planeta> get_planetas(){ // Getter Lista Planetas
         return this.planetas;
     }
@@ -18,11 +23,6 @@ public class MapaGalactico {
         } else{
             System.out.println("La posición está fuera de los límites.");
         }
-    }
-
-    public MapaGalactico(){ // Constructor
-        this.planetas = new ArrayList<>();
-        this.posicion = 0;
     }
 
     public Planeta generadorPlaneta(){ // Genera un planeta (y su tipo) al azar acorde a las probabilidades entregadas en el enunciado y lo guarda en la lista de planetas
@@ -66,7 +66,7 @@ public class MapaGalactico {
         return;
     }
 
-    public Planeta planetaActual(){
+    public Planeta planetaActual(){ // Getter planeta actual
         return planetas.get(posicion);
     }
 }

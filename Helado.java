@@ -1,10 +1,14 @@
 public class Helado extends Planeta {
-    private int temperatura = generarTemperatura();
+    private int temperatura;
 
     public Helado(){ // Constructor
         super();
         this.temperatura = generarTemperatura();
         setearValores();
+    }
+
+    public int get_temperatura(){ // Getter Temperatura
+        return this.temperatura;
     }
 
     private int generarTemperatura(){ // Genera una temperatura al azar acorde a los valores entregados en el enunciado
@@ -19,16 +23,14 @@ public class Helado extends Planeta {
         int cristales = (int)(0.65 * 4 * Math.PI * radio * radio);
         int flores = (int)(0.35 * 4 * Math.PI * radio * radio);
         int consumo = (int)(0.15 * Math.abs(this.temperatura));
+        String id = "Helado";
 
         set_radio(radio);
         set_cristalesHidrogeno(cristales);
         set_floresSodio(flores);
         set_consumoEnergia(consumo);
+        set_identificador(id);
 
         return;
-    }
-    
-    public int get_temperatura(){ // Getter Temperatura
-        return this.temperatura;
     }
 }
