@@ -8,6 +8,17 @@ public class Radiactivo extends Planeta {
         setearValores();
     }
 
+    public int get_radiacion(){ // Getter Radiación
+        return this.radiacion;
+    }
+    public int get_uranio(){ // Getter Uranio
+        return this.uranio;
+    }
+    public void set_uranio(int uranum){
+        this.uranio = uranum;
+        return;
+    }
+
     private int generarRadiacion(){ // Genera una radiación al azar acorde a los valores entregados en el enunciado
         return (int)((10) + Math.random() * (((50) - (10)) + 1));
     }
@@ -30,12 +41,5 @@ public class Radiactivo extends Planeta {
         this.uranio = (int)(0.25 * 4 * Math.PI * radio * radio);
 
         return;
-    }
-
-    public int get_radiacion(){ // Getter Radiación
-        return this.radiacion;
-    }
-    public int get_uranio(){ // Getter Uranio
-        return this.uranio;
     }
 }

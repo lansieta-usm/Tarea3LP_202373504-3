@@ -1,7 +1,7 @@
 public class Jugador {
     private float unidadesEnergiaProteccion;
     private float eficienciaEnergiaProteccion;
-    private float inv_cristalesHidrogeno;
+    
     private float inv_floresSodio;
     private float inv_uranio;
     private float inv_platino;
@@ -9,7 +9,6 @@ public class Jugador {
     public Jugador(){ // Constructor
         this.unidadesEnergiaProteccion = 100;
         this.eficienciaEnergiaProteccion = 0;
-        this.inv_cristalesHidrogeno = 0;
         this.inv_floresSodio = 0;
         this.inv_uranio = 0;
         this.inv_platino = 0;
@@ -20,9 +19,6 @@ public class Jugador {
     }
     public float get_eficienciaEnergiaProteccion(){ // Getter Eficiencia Enegería Protección
         return this.eficienciaEnergiaProteccion;
-    }
-    public float get_inv_cristalesHidrogeno(){ // Getter Cristales de Hidrógeno del inventario
-        return this.inv_cristalesHidrogeno;
     }
     public float get_inv_floresSodio(){ // Getter Flores de Sodio del inventario
         return this.inv_floresSodio;
@@ -41,6 +37,18 @@ public class Jugador {
         this.eficienciaEnergiaProteccion = eep;
         return;
     }
+    public void set_inv_floresSodio(float flores){ // Setter Flores Sodio del inventario
+        this.inv_floresSodio = flores;
+        return;
+    }
+    public void set_inv_uranio(float uranio){ // Setter Uranio del inventario
+        this.inv_uranio = uranio;
+        return;
+    }
+    public void set_inv_platino(float platino){ // Setter Platino del inventario
+        this.inv_platino = platino;
+        return;
+    }
 
     public void recargarEnergiaProteccion(int sodio){
         if (sodio <= this.inv_floresSodio){
@@ -49,7 +57,7 @@ public class Jugador {
             this.inv_floresSodio -= sodio;
             System.out.println("Se han recargado "+aRecargar+" unidades de protección al exotraje usando "+sodio+" unidades de Flores de Sodio del inventario");
         } else{
-            System.out.println("¡Oh, no! La cantidad de Flores de Sodio disponible en el inventario no es suficiente para recargar la protección del exotraje");
+            System.out.println("¡Oh, no! La cantidad de Flores de Sodio disponible en el inventario no es suficiente para hacer esta recarga");
             return;
         }
         return;

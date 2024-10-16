@@ -1,10 +1,12 @@
 public class Nave {
     private float unidadesCombustible;
     private float eficienciaPropulsor;
+    private float inv_cristalesHidrogeno;
 
     public Nave(){ // Constructor
         this.unidadesCombustible = 100;
         this.eficienciaPropulsor = 0;
+        this.inv_cristalesHidrogeno = 0;
     }
 
     public float get_unidadesCombustible(){ // Getter Unidades Combustible
@@ -13,7 +15,9 @@ public class Nave {
     public float get_eficienciaPropulsor(){ // Getter Eficiencia Propulsor
         return this.eficienciaPropulsor;
     }
-    /*
+    public float get_inv_cristalesHidrogeno(){ // Getter Cristales de Hidrógeno del inventario
+        return this.inv_cristalesHidrogeno;
+    }
     public void set_unidadesCombustible(float combustible){ // Setter Unidades Combustible
         this.unidadesCombustible = combustible;
         return;
@@ -22,7 +26,10 @@ public class Nave {
         this.eficienciaPropulsor = eficiencia;
         return;
     }
-    */
+    public void set_inv_cristalesHidrogeno(float cristales){ // Setter Cristales Hidrógeno del inventario
+        this.inv_cristalesHidrogeno = cristales;
+        return;
+    }
     
     public boolean viajarPlaneta(MapaGalactico MG, int direccion, int tamanoSalto){
         int pos = MG.get_posicion();
@@ -66,6 +73,15 @@ public class Nave {
     }
 
     public void recargarPropulsores(int hidrogeno){
+        if (hidrogeno <= this.inv_cristalesHidrogeno){
+            float aRecargar = (float)(0.6 * hidrogeno * (1+this.eficienciaPropulsor));
+            this.unidadesCombustible += aRecargar;
+            this.inv_cristalesHidrogeno -= hidrogeno;
+            System.out.println("Se han recargado "+aRecargar+" unidades de protección al exotraje usando "+hidrogeno+" unidades de Cristales de Hidrógeno del inventario");
+        } else{
+            System.out.println("¡Oh, no! La cantidad de Cristales de Hidrógeno disponible en el inventario no es suficiente para hacer esta recarga");
+            return;
+        }
         return;
     }
 }

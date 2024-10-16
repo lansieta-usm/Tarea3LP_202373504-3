@@ -51,7 +51,7 @@ public abstract class Planeta {
 
     public boolean visitar(Jugador jugador){
         this.indicadorVisita = true;
-        System.out.println("Consumo: "+this.consumoEnergia);
+        // System.out.println("Consumo: "+this.consumoEnergia);
         float energia_final = jugador.get_unidadesEnergiaProteccion()-this.consumoEnergia;
         jugador.set_unidadesEnergiaProteccion(energia_final);
         return true;
@@ -60,30 +60,26 @@ public abstract class Planeta {
     public int extraerRecursos(int tipo){
         if (this.indicadorVisita == true){
             if(tipo == 1){
+                System.out.println();
                 System.out.println("Has seleccionado: 1. Cristales de Hidrógeno");
+                System.out.println();
             } else if (tipo == 2){
+                System.out.println();
                 System.out.println("Has seleccionado: 2. Flores de Sodio");
+                System.out.println();
             } else if (tipo == 3){
+                System.out.println();
                 System.out.println("Has seleccionado: 3. Uranio");
-                if(!this.identificador.equals("Radiactivo")){
-                    System.out.println("¡Alto ahi! El uranio solo está disponible en planetas Radiactivos");
-                    return -1;
-                } else{
-
-                }
+                System.out.println();
             } else if (tipo == 4){
+                System.out.println();
                 System.out.println("Has seleccionado: 4. Platino");
-                if(!this.identificador.equals("Volcanico")){
-                    System.out.println("¡Alto ahi! El platino solo está disponible en planetas Volcánicos");
-                    return -1;
-                } else{
-                    
-                }
+                System.out.println();
             }
             return 0;
         } else{
             System.out.println("¡No puedes extraer recursos de un planeta si no lo has visitado!");
-            return -1;
+            return 0;
         }
     }
 
