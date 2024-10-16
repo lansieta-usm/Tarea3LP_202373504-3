@@ -15,4 +15,5 @@ Desde la consola, usando los siguientes comandos:
 Instrucciones de ejecucion:
 
 Consideraciones adicionales:
-Se cambió la generación de la profundidad en la clase Oceanico de modo que la máxima profundidad que se pueda generar sea de 100 mts. Esto debido a la existencia de valores negativos en la protección del exotraje del jugador tras visitar un planeta oceánico con una profundidad muy grande (>223).
+Cambié la generación de la profundidad en la clase Oceanico de modo que la máxima profundidad que se pueda generar sea de 100 mts. Esto debido a la existencia de valores negativos en la protección del exotraje del jugador tras visitar un planeta oceánico con una profundidad muy grande (>223).
+Programé la recarga de combustible de la Nave y energía del exotraje de modo que estas se puedan hacer siempre y cuando el jugador esté orbitando un planeta. Las instrucciones respecto a cómo debían ser estos atributos no eran claras, por ende lo dejé en el apartado "3. Mas opciones" al momento de orbitar un planeta.
