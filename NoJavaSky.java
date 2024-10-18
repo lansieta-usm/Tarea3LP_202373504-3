@@ -16,6 +16,7 @@ public class NoJavaSky {
             seleccion = input.nextLine();
         }
         if(seleccion.equals("2")){
+            System.out.println();
             System.out.println("No Java’s Sky es un juego de supervivencia y de exploración planetaria. Donde puedes visitar diversos planetas, extraer recursos únicos y sobrevivir a las adversidades climáticas, con el objetivo de llegar al centro de la galaxia.");
             System.out.println("Dicen que no hay mejor manera de aprender que en la práctica... ¡Así que, valiente explorador(a), empecemos una partida!");
         }
@@ -54,7 +55,7 @@ public class NoJavaSky {
                         break;
                     } else{
                         System.out.println("Solo las mejores naves pueden llegar hasta aquí... ¿Estás seguro(a) de que la tuya tiene lo necesario?");
-                        System.out.println("HINT: Sigue mejorando la eficiencia");
+                        System.out.println("HINT: Mejora la eficiencia del propulsor de tu Nave");
                     }
                 } else{
                     if(jugador.get_unidadesEnergiaProteccion() <= 0){ // Si el jugador sucumbe
@@ -154,8 +155,571 @@ public class NoJavaSky {
                                             System.out.println();
                                         }
                                     } else if(seleccion.equals("2")){
-                                        //tieneAsentamientos(jugador);
+                                        System.out.println();
+                                        System.out.println("Has seleccionado: 2. Intercambiar recursos");
+                                        System.out.println();
+                                        if(mapa.planetaActual().get_identificador().equals("Helado")){ // Intercambios en un Planeta Helado
+                                            int randint = (int)(0 + Math.random() * ((100 - 0) + 1)); // Probabilidad
+                                            System.out.println("¡Te damos la bienvenida al MercadoHelado... Un lugar donde TE CONGELARÁS del asombro al ver las ofertas!");
+                                            System.out.println();
+                                            int puestos;
+                                            if(randint < 33){
+                                                puestos = 1;
+                                            } else if(randint < 66){
+                                                puestos = 2;
+                                            } else{
+                                                puestos = 3;
+                                            }
+                                            if(puestos == 1){
+                                                System.out.println("Hoy sólo hay un puesto abierto en el MercadoHelado");
+                                                System.out.println();
+                                                float mejora1 = tieneAsentamientos.generarMejora();
+                                                float mejora2 = tieneAsentamientos.generarMejora();
+                                                int precio1 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio2 = tieneAsentamientos.generarPrecioHelado();
+                                                System.out.println("-------------------- PUESTO #1 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("¿Qué te gustaría hacer?");
+                                                System.out.println("1. Comprar opción 1");
+                                                System.out.println("2. Comprar opción 2");
+                                                System.out.println("3. Salir del MercadoHelado");
+                                                System.out.print("Selecciona una opción (1, 2 o 3): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2") && !seleccion.equals("3")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1, 2 o 3): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                if(seleccion.equals("1")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 1. Comprar opción 1");
+                                                    System.out.println();
+                                                    if(jugador.get_inv_uranio()-precio1 >= 0){
+                                                        nave.set_eficienciaPropulsor(nave.get_eficienciaPropulsor()+mejora1);
+                                                        jugador.set_inv_uranio(jugador.get_inv_uranio()-precio1);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora1*100+"% la eficiencia del propulsor de la Nave usando "+precio1+" unidades de Uranio del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else if(seleccion.equals("2")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 2. Comprar opción 2");
+                                                    System.out.println();
+                                                    if(jugador.get_inv_platino()-precio2 >= 0){
+                                                        jugador.set_eficienciaEnergiaProteccion(jugador.get_eficienciaEnergiaProteccion()+mejora2);
+                                                        jugador.set_inv_platino(jugador.get_inv_platino()-precio2);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora2*100+"% la eficiencia del propulsor de la Nave usando "+precio2+" unidades de Platino del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else{
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 3. Salir del MercadoHelado");
+                                                    System.out.println();
+                                                    System.out.println("El MercadoHelado ha cerrado sus puertas por hoy... ¡Esperamos volver a verte pronto!");
+                                                    System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                    System.out.println();
+                                                }
+                                            } else if(puestos == 2){
+                                                System.out.println("Hoy hay dos puestos abiertos en el MercadoHelado");
+                                                System.out.println();
+                                                float mejora1 = tieneAsentamientos.generarMejora();
+                                                float mejora2 = tieneAsentamientos.generarMejora();
+                                                float mejora3 = tieneAsentamientos.generarMejora();
+                                                float mejora4 = tieneAsentamientos.generarMejora();
+                                                int precio1 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio2 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio3 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio4 = tieneAsentamientos.generarPrecioHelado();
+                                                System.out.println("-------------------- PUESTO #1 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("-------------------- PUESTO #2 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("¿A qué puesto te quieres dirigir?");
+                                                System.out.println("1. PUESTO #1");
+                                                System.out.println("2. PUESTO #2");
+                                                System.out.print("Selecciona una opción (1 o 2): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1 o 2): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                int puesto_seleccionado = Integer.parseInt(seleccion);
+                                                System.out.println();
+                                                System.out.println("¿Qué te gustaría hacer?");
+                                                System.out.println("1. Comprar opción 1");
+                                                System.out.println("2. Comprar opción 2");
+                                                System.out.println("3. Salir del MercadoHelado");
+                                                System.out.print("Selecciona una opción (1, 2 o 3): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2") && !seleccion.equals("3")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1, 2 o 3): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                if(seleccion.equals("1")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 1. Comprar opción 1");
+                                                    System.out.println();
+                                                    int precio_final;
+                                                    float mejora_final;
+                                                    if(puesto_seleccionado == 1){
+                                                        precio_final = precio1;
+                                                        mejora_final = mejora1;
+                                                    } else{
+                                                        precio_final = precio3;
+                                                        mejora_final = mejora3;
+                                                    }
+                                                    if(jugador.get_inv_uranio()-precio_final >= 0){
+                                                        nave.set_eficienciaPropulsor(nave.get_eficienciaPropulsor()+mejora_final);
+                                                        jugador.set_inv_uranio(jugador.get_inv_uranio()-precio_final);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora_final*100+"% la eficiencia del propulsor de la Nave usando "+precio_final+" unidades de Uranio del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else if(seleccion.equals("2")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 2. Comprar opción 2");
+                                                    System.out.println();
+                                                    int precio_final;
+                                                    float mejora_final;
+                                                    if(puesto_seleccionado == 1){
+                                                        precio_final = precio2;
+                                                        mejora_final = mejora2;
+                                                    } else{
+                                                        precio_final = precio4;
+                                                        mejora_final = mejora4;
+                                                    }
+                                                    if(jugador.get_inv_platino()-precio_final >= 0){
+                                                        jugador.set_eficienciaEnergiaProteccion(jugador.get_eficienciaEnergiaProteccion()+mejora_final);
+                                                        jugador.set_inv_platino(jugador.get_inv_platino()-precio_final);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora_final*100+"% la eficiencia del propulsor de la Nave usando "+precio_final+" unidades de Platino del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else{
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 3. Salir del MercadoHelado");
+                                                    System.out.println();
+                                                    System.out.println("El MercadoHelado ha cerrado sus puertas por hoy... ¡Esperamos volver a verte pronto!");
+                                                    System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                    System.out.println();
+                                                }
+                                            } else{
+                                                System.out.println("Hoy los 3 puestos están abiertos en el MercadoHelado");
+                                                System.out.println();
+                                                float mejora1 = tieneAsentamientos.generarMejora();
+                                                float mejora2 = tieneAsentamientos.generarMejora();
+                                                float mejora3 = tieneAsentamientos.generarMejora();
+                                                float mejora4 = tieneAsentamientos.generarMejora();
+                                                float mejora5 = tieneAsentamientos.generarMejora();
+                                                float mejora6 = tieneAsentamientos.generarMejora();
+                                                int precio1 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio2 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio3 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio4 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio5 = tieneAsentamientos.generarPrecioHelado();
+                                                int precio6 = tieneAsentamientos.generarPrecioHelado();
+                                                System.out.println("-------------------- PUESTO #1 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("-------------------- PUESTO #2 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("-------------------- PUESTO #3 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("¿A qué puesto te quieres dirigir?");
+                                                System.out.println("1. PUESTO #1");
+                                                System.out.println("2. PUESTO #2");
+                                                System.out.println("3. PUESTO #3");
+                                                System.out.print("Selecciona una opción (1, 2 o 3): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2") && !seleccion.equals("3")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1, 2 o 3): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                int puesto_seleccionado = Integer.parseInt(seleccion);
+                                                System.out.println();
+                                                System.out.println("¿Qué te gustaría hacer?");
+                                                System.out.println("1. Comprar opción 1");
+                                                System.out.println("2. Comprar opción 2");
+                                                System.out.println("3. Salir del MercadoHelado");
+                                                System.out.print("Selecciona una opción (1, 2 o 3): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2") && !seleccion.equals("3")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1, 2 o 3): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                if(seleccion.equals("1")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 1. Comprar opción 1");
+                                                    System.out.println();
+                                                    int precio_final;
+                                                    float mejora_final;
+                                                    if(puesto_seleccionado == 1){
+                                                        precio_final = precio1;
+                                                        mejora_final = mejora1;
+                                                    } else if(puesto_seleccionado == 2){
+                                                        precio_final = precio3;
+                                                        mejora_final = mejora3;
+                                                    } else{
+                                                        precio_final = precio5;
+                                                        mejora_final = mejora5;
+                                                    }
+                                                    if(jugador.get_inv_uranio()-precio_final >= 0){
+                                                        nave.set_eficienciaPropulsor(nave.get_eficienciaPropulsor()+mejora_final);
+                                                        jugador.set_inv_uranio(jugador.get_inv_uranio()-precio_final);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora_final*100+"% la eficiencia del propulsor de la Nave usando "+precio_final+" unidades de Uranio del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else if(seleccion.equals("2")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 2. Comprar opción 2");
+                                                    System.out.println();
+                                                    int precio_final;
+                                                    float mejora_final;
+                                                    if(puesto_seleccionado == 1){
+                                                        precio_final = precio2;
+                                                        mejora_final = mejora2;
+                                                    } else if(puesto_seleccionado == 2){
+                                                        precio_final = precio4;
+                                                        mejora_final = mejora4;
+                                                    } else{
+                                                        precio_final = precio6;
+                                                        mejora_final = mejora6;
+                                                    }
+                                                    if(jugador.get_inv_platino()-precio_final >= 0){
+                                                        jugador.set_eficienciaEnergiaProteccion(jugador.get_eficienciaEnergiaProteccion()+mejora_final);
+                                                        jugador.set_inv_platino(jugador.get_inv_platino()-precio_final);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora_final*100+"% la eficiencia del propulsor de la Nave usando "+precio_final+" unidades de Platino del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else{
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 3. Salir del MercadoHelado");
+                                                    System.out.println();
+                                                    System.out.println("El MercadoHelado ha cerrado sus puertas por hoy... ¡Esperamos volver a verte pronto!");
+                                                    System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                    System.out.println();
+                                                }
+                                            }
+                                        } else{ // Intercambios en un planeta Oceanico
+                                            int randint = (int)(0 + Math.random() * ((100 - 0) + 1)); // Probabilidad
+                                            System.out.println("¡Te damos la bienvenida al AquaMarket... Un lugar donde los altos precios SE EVAPORAN como el agua de los océanos!");
+                                            System.out.println();
+                                            int puestos;
+                                            if(randint < 33){
+                                                puestos = 1;
+                                            } else if(randint < 66){
+                                                puestos = 2;
+                                            } else{
+                                                puestos = 3;
+                                            }
+                                            if(puestos == 1){
+                                                System.out.println("Hoy sólo hay un puesto abierto en el AquaMarket");
+                                                System.out.println();
+                                                float mejora1 = tieneAsentamientos.generarMejora();
+                                                float mejora2 = tieneAsentamientos.generarMejora();
+                                                int precio1 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio2 = tieneAsentamientos.generarPrecioOceanco();
+                                                System.out.println("-------------------- PUESTO #1 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("¿Qué te gustaría hacer?");
+                                                System.out.println("1. Comprar opción 1");
+                                                System.out.println("2. Comprar opción 2");
+                                                System.out.println("3. Salir del AquaMarket");
+                                                System.out.print("Selecciona una opción (1, 2 o 3): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2") && !seleccion.equals("3")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1, 2 o 3): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                if(seleccion.equals("1")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 1. Comprar opción 1");
+                                                    System.out.println();
+                                                    if(jugador.get_inv_uranio()-precio1 >= 0){
+                                                        nave.set_eficienciaPropulsor(nave.get_eficienciaPropulsor()+mejora1);
+                                                        jugador.set_inv_uranio(jugador.get_inv_uranio()-precio1);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora1*100+"% la eficiencia del propulsor de la Nave usando "+precio1+" unidades de Uranio del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else if(seleccion.equals("2")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 2. Comprar opción 2");
+                                                    System.out.println();
+                                                    if(jugador.get_inv_platino()-precio2 >= 0){
+                                                        jugador.set_eficienciaEnergiaProteccion(jugador.get_eficienciaEnergiaProteccion()+mejora2);
+                                                        jugador.set_inv_platino(jugador.get_inv_platino()-precio2);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora2*100+"% la eficiencia del propulsor de la Nave usando "+precio2+" unidades de Platino del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else{
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 3. Salir del AquaMarket");
+                                                    System.out.println();
+                                                    System.out.println("El AquaMarket ha cerrado sus puertas por hoy... ¡Esperamos volver a verte pronto!");
+                                                    System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                    System.out.println();
+                                                }
+                                            } else if(puestos == 2){
+                                                System.out.println("Hoy hay dos puestos abiertos en el AquaMarket");
+                                                System.out.println();
+                                                float mejora1 = tieneAsentamientos.generarMejora();
+                                                float mejora2 = tieneAsentamientos.generarMejora();
+                                                float mejora3 = tieneAsentamientos.generarMejora();
+                                                float mejora4 = tieneAsentamientos.generarMejora();
+                                                int precio1 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio2 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio3 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio4 = tieneAsentamientos.generarPrecioOceanco();
+                                                System.out.println("-------------------- PUESTO #1 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("-------------------- PUESTO #2 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("¿A qué puesto te quieres dirigir?");
+                                                System.out.println("1. PUESTO #1");
+                                                System.out.println("2. PUESTO #2");
+                                                System.out.print("Selecciona una opción (1 o 2): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1 o 2): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                int puesto_seleccionado = Integer.parseInt(seleccion);
+                                                System.out.println();
+                                                System.out.println("¿Qué te gustaría hacer?");
+                                                System.out.println("1. Comprar opción 1");
+                                                System.out.println("2. Comprar opción 2");
+                                                System.out.println("3. Salir del AquaMarket");
+                                                System.out.print("Selecciona una opción (1, 2 o 3): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2") && !seleccion.equals("3")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1, 2 o 3): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                if(seleccion.equals("1")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 1. Comprar opción 1");
+                                                    System.out.println();
+                                                    int precio_final;
+                                                    float mejora_final;
+                                                    if(puesto_seleccionado == 1){
+                                                        precio_final = precio1;
+                                                        mejora_final = mejora1;
+                                                    } else{
+                                                        precio_final = precio3;
+                                                        mejora_final = mejora3;
+                                                    }
+                                                    if(jugador.get_inv_uranio()-precio_final >= 0){
+                                                        nave.set_eficienciaPropulsor(nave.get_eficienciaPropulsor()+mejora_final);
+                                                        jugador.set_inv_uranio(jugador.get_inv_uranio()-precio_final);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora_final*100+"% la eficiencia del propulsor de la Nave usando "+precio_final+" unidades de Uranio del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else if(seleccion.equals("2")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 2. Comprar opción 2");
+                                                    System.out.println();
+                                                    int precio_final;
+                                                    float mejora_final;
+                                                    if(puesto_seleccionado == 1){
+                                                        precio_final = precio2;
+                                                        mejora_final = mejora2;
+                                                    } else{
+                                                        precio_final = precio4;
+                                                        mejora_final = mejora4;
+                                                    }
+                                                    if(jugador.get_inv_platino()-precio_final >= 0){
+                                                        jugador.set_eficienciaEnergiaProteccion(jugador.get_eficienciaEnergiaProteccion()+mejora_final);
+                                                        jugador.set_inv_platino(jugador.get_inv_platino()-precio_final);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora_final*100+"% la eficiencia del propulsor de la Nave usando "+precio_final+" unidades de Platino del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else{
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 3. Salir del AquaMarket");
+                                                    System.out.println();
+                                                    System.out.println("El AquaMarket ha cerrado sus puertas por hoy... ¡Esperamos volver a verte pronto!");
+                                                    System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                    System.out.println();
+                                                }
+                                            } else{
+                                                System.out.println("Hoy los 3 puestos están abiertos en el AquaMarket");
+                                                System.out.println();
+                                                float mejora1 = tieneAsentamientos.generarMejora();
+                                                float mejora2 = tieneAsentamientos.generarMejora();
+                                                float mejora3 = tieneAsentamientos.generarMejora();
+                                                float mejora4 = tieneAsentamientos.generarMejora();
+                                                float mejora5 = tieneAsentamientos.generarMejora();
+                                                float mejora6 = tieneAsentamientos.generarMejora();
+                                                int precio1 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio2 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio3 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio4 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio5 = tieneAsentamientos.generarPrecioOceanco();
+                                                int precio6 = tieneAsentamientos.generarPrecioOceanco();
+                                                System.out.println("-------------------- PUESTO #1 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("-------------------- PUESTO #2 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("-------------------- PUESTO #3 --------------------");
+                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("---------------------------------------------------");
+                                                System.out.println();
+                                                System.out.println("¿A qué puesto te quieres dirigir?");
+                                                System.out.println("1. PUESTO #1");
+                                                System.out.println("2. PUESTO #2");
+                                                System.out.println("3. PUESTO #3");
+                                                System.out.print("Selecciona una opción (1, 2 o 3): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2") && !seleccion.equals("3")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1, 2 o 3): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                int puesto_seleccionado = Integer.parseInt(seleccion);
+                                                System.out.println();
+                                                System.out.println("¿Qué te gustaría hacer?");
+                                                System.out.println("1. Comprar opción 1");
+                                                System.out.println("2. Comprar opción 2");
+                                                System.out.println("3. Salir del AquaMarket");
+                                                System.out.print("Selecciona una opción (1, 2 o 3): ");
+                                                seleccion = input.nextLine();
+                                                while(!seleccion.equals("1") && !seleccion.equals("2") && !seleccion.equals("3")){
+                                                    System.out.print("Error de selección, ingresa un input correcto (1, 2 o 3): ");
+                                                    seleccion = input.nextLine();
+                                                }
+                                                if(seleccion.equals("1")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 1. Comprar opción 1");
+                                                    System.out.println();
+                                                    int precio_final;
+                                                    float mejora_final;
+                                                    if(puesto_seleccionado == 1){
+                                                        precio_final = precio1;
+                                                        mejora_final = mejora1;
+                                                    } else if(puesto_seleccionado == 2){
+                                                        precio_final = precio3;
+                                                        mejora_final = mejora3;
+                                                    } else{
+                                                        precio_final = precio5;
+                                                        mejora_final = mejora5;
+                                                    }
+                                                    if(jugador.get_inv_uranio()-precio_final >= 0){
+                                                        nave.set_eficienciaPropulsor(nave.get_eficienciaPropulsor()+mejora_final);
+                                                        jugador.set_inv_uranio(jugador.get_inv_uranio()-precio_final);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora_final*100+"% la eficiencia del propulsor de la Nave usando "+precio_final+" unidades de Uranio del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else if(seleccion.equals("2")){
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 2. Comprar opción 2");
+                                                    System.out.println();
+                                                    int precio_final;
+                                                    float mejora_final;
+                                                    if(puesto_seleccionado == 1){
+                                                        precio_final = precio2;
+                                                        mejora_final = mejora2;
+                                                    } else if(puesto_seleccionado == 2){
+                                                        precio_final = precio4;
+                                                        mejora_final = mejora4;
+                                                    } else{
+                                                        precio_final = precio6;
+                                                        mejora_final = mejora6;
+                                                    }
+                                                    if(jugador.get_inv_platino()-precio_final >= 0){
+                                                        jugador.set_eficienciaEnergiaProteccion(jugador.get_eficienciaEnergiaProteccion()+mejora_final);
+                                                        jugador.set_inv_platino(jugador.get_inv_platino()-precio_final);
+                                                        System.out.println("¡Excelente alternativa! Has mejorado en un "+mejora_final*100+"% la eficiencia del propulsor de la Nave usando "+precio_final+" unidades de Platino del inventario");
+                                                        System.out.println();
+                                                    } else{
+                                                        System.out.println("¡Oh, no! Parece ser que no te alcanza... Vuelve otro día");
+                                                        System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                        System.out.println();
+                                                    }
+                                                } else{
+                                                    System.out.println();
+                                                    System.out.println("Has seleccionado: 3. Salir del AquaMarket");
+                                                    System.out.println();
+                                                    System.out.println("El AquaMarket ha cerrado sus puertas por hoy... ¡Esperamos volver a verte pronto!");
+                                                    System.out.println("NOTA: Debido a la economía inestable que se vive en "+mapa.planetaActual()+", los precios varían todos los días");
+                                                    System.out.println();
+                                                }
+                                            }
+                                        }
                                     } else{
+                                        System.out.println();
+                                        System.out.println("Saliendo de "+mapa.planetaActual()+"... ¡Esa fue una buena expedición!");
                                         mapa.planetaActual().salir();
                                         break;
                                     }
@@ -261,6 +825,8 @@ public class NoJavaSky {
                                             }
                                         }
                                     } else{
+                                        System.out.println();
+                                        System.out.println("Saliendo de "+mapa.planetaActual()+"... ¡Esa fue una buena expedición!");
                                         mapa.planetaActual().salir();
                                         break;
                                     }
