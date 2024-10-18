@@ -17,12 +17,23 @@ public class MapaGalactico {
     public int get_posicion(){ // Getter Posición
         return this.posicion;
     }
+    public boolean get_hayCG(){ // Getter Indicador de Centro Galáctico (no se usó en el código final)
+        return this.hayCG;
+    }
+    public void set_planetas(List<Planeta> planets){ // Setter Lista Planetas (no se usó en el código final)
+        this.planetas = planets;
+        return;
+    }
     public void set_posicion(int position){ // Setter Posición
         if (position >= 0 && position < planetas.size()){
             this.posicion = position;
         } else{
             System.out.println("La posición está fuera de los límites.");
         }
+    }
+    public void set_hayCG(boolean indicador){ // Setter Indicador Centro Galáctico (no se usó en el código final)
+        this.hayCG = indicador;
+        return;
     }
 
     public Planeta generadorPlaneta(){ // Genera un planeta (y su tipo) al azar acorde a las probabilidades entregadas en el enunciado y lo guarda en la lista de planetas

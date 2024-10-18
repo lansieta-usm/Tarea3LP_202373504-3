@@ -75,9 +75,15 @@ public class Nave {
     public void recargarPropulsores(int hidrogeno){
         if (hidrogeno <= this.inv_cristalesHidrogeno){
             float aRecargar = (float)(0.6 * hidrogeno * (1+this.eficienciaPropulsor));
-            this.unidadesCombustible += aRecargar;
-            this.inv_cristalesHidrogeno -= hidrogeno;
-            System.out.println("Se han recargado "+aRecargar+" unidades de protección al exotraje usando "+hidrogeno+" unidades de Cristales de Hidrógeno del inventario");
+            if((this.unidadesCombustible+aRecargar)<=100){
+                this.unidadesCombustible += aRecargar;
+                this.inv_cristalesHidrogeno -= hidrogeno;
+                System.out.println("Se han recargado "+aRecargar+" unidades de protección al exotraje usando "+hidrogeno+" unidades de Cristales de Hidrógeno del inventario");
+            } else{
+                this.unidadesCombustible = 100;
+                this.inv_cristalesHidrogeno -= hidrogeno;
+                System.out.println("¡Vaya recarga! Has llenado el estanque de combustible de la Nave al 100% usando "+hidrogeno+" unidades de Cristales de Hidrógeno del inventario");
+            }
         } else{
             System.out.println("¡Oh, no! La cantidad de Cristales de Hidrógeno disponible en el inventario no es suficiente para hacer esta recarga");
             return;

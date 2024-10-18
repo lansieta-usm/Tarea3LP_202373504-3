@@ -2,7 +2,7 @@ public class Radiactivo extends Planeta {
     private int radiacion;
     private int uranio;
 
-    public Radiactivo(){
+    public Radiactivo(){ // Constructor
         super();
         this.radiacion = generarRadiacion();
         setearValores();
@@ -14,7 +14,11 @@ public class Radiactivo extends Planeta {
     public int get_uranio(){ // Getter Uranio
         return this.uranio;
     }
-    public void set_uranio(int uranum){
+    public void set_radiacion(int radiation){ // Setter Radiación (no se usó en el código final)
+        this.radiacion = radiation;
+        return;
+    }
+    public void set_uranio(int uranum){ // Setter Uranio
         this.uranio = uranum;
         return;
     }
@@ -41,5 +45,10 @@ public class Radiactivo extends Planeta {
         this.uranio = (int)(0.25 * 4 * Math.PI * radio * radio);
 
         return;
+    }
+
+    @Override
+    public int caracteristicaPlaneta() {
+        return this.radiacion;
     }
 }

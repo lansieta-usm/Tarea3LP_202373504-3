@@ -18,3 +18,4 @@ No hay consideraciones adicionales para la ejecución... El programa es capaz de
 Consideraciones adicionales:
 Cambié la generación de la profundidad en la clase Oceanico de modo que la máxima profundidad que se pueda generar sea de 100 mts. Esto debido a la existencia de valores negativos en la protección del exotraje del jugador tras visitar un planeta oceánico con una profundidad muy grande (>223).
 Programé la recarga de combustible de la Nave y energía del exotraje de modo que estas se puedan hacer siempre y cuando el jugador esté orbitando un planeta. Las instrucciones respecto a cómo debían ser estos atributos no eran claras, por ende lo dejé en el apartado "3. Mas opciones" al momento de orbitar un planeta.
+Importante destacar que el jugador puede descubrir nuevos planetas si, al hacer un salto, la posición final es igual al tamaño de la lista (Ej: Para descubrir el planeta 11, desde la posición 0, se debe hacer un salto de tamaño 10 hacia la derecha).

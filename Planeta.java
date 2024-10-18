@@ -48,6 +48,10 @@ public abstract class Planeta {
         this.identificador = id;
         return;
     }
+    public void set_indicadorVisita(boolean indicator){ // Setter Indicador de visita (no se usó en el código final)
+        this.indicadorVisita = indicator;
+        return;
+    }
 
     public boolean visitar(Jugador jugador){
         this.indicadorVisita = true;
@@ -82,6 +86,8 @@ public abstract class Planeta {
             return 0;
         }
     }
+
+    public abstract int caracteristicaPlaneta(); // Una especie de Getter para los atributos únicos de las clases hijas
 
     public boolean salir(){
         this.indicadorVisita = false;

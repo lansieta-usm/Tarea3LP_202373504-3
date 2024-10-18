@@ -10,6 +10,9 @@ public class Oceanico extends Planeta {
     public int get_profundidad(){ // Getter Profundidad
         return this.profundidad;
     }
+    public void set_profundidad(int deep){ // Setter Profundidad (no se usó en el código final)
+        this.profundidad = deep;
+    }
 
     private int generarProfundidad(){ // Genera una profundidad al azar acorde a los valores entregados en el enunciado
         return (int)((30) + Math.random() * (((100) - (30)) + 1));
@@ -32,5 +35,10 @@ public class Oceanico extends Planeta {
         set_identificador(id);
 
         return;
+    }
+
+    @Override
+    public int caracteristicaPlaneta() {
+        return this.profundidad;
     }
 }

@@ -1,7 +1,6 @@
 public class Jugador {
     private float unidadesEnergiaProteccion;
     private float eficienciaEnergiaProteccion;
-    
     private float inv_floresSodio;
     private float inv_uranio;
     private float inv_platino;
@@ -53,9 +52,15 @@ public class Jugador {
     public void recargarEnergiaProteccion(int sodio){
         if (sodio <= this.inv_floresSodio){
             float aRecargar = (float)(0.65 * sodio * (1+this.eficienciaEnergiaProteccion));
-            this.unidadesEnergiaProteccion += aRecargar;
-            this.inv_floresSodio -= sodio;
-            System.out.println("Se han recargado "+aRecargar+" unidades de protección al exotraje usando "+sodio+" unidades de Flores de Sodio del inventario");
+            if((this.unidadesEnergiaProteccion+aRecargar)<=100){
+                this.unidadesEnergiaProteccion += aRecargar;
+                this.inv_floresSodio -= sodio;
+                System.out.println("Se han recargado "+aRecargar+" unidades de protección al exotraje usando "+sodio+" unidades de Flores de Sodio del inventario");
+            } else{
+                this.unidadesEnergiaProteccion = 100;
+                this.inv_floresSodio -= sodio;
+                System.out.println("¡Vaya recarga! Has llenado la energía protectora del exotraje al 100% usando "+sodio+" unidades de Flores de Sodio del inventario");
+            }
         } else{
             System.out.println("¡Oh, no! La cantidad de Flores de Sodio disponible en el inventario no es suficiente para hacer esta recarga");
             return;

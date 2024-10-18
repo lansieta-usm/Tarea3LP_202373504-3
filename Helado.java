@@ -10,6 +10,10 @@ public class Helado extends Planeta {
     public int get_temperatura(){ // Getter Temperatura
         return this.temperatura;
     }
+    public void setear_temperatura(int temp){ // Setter temperatura (No se usó en el código final)
+        this.temperatura = temp;
+        return;
+    }
 
     private int generarTemperatura(){ // Genera una temperatura al azar acorde a los valores entregados en el enunciado
         return (int)((-120) + Math.random() * (((-30) - (-120)) + 1));
@@ -32,5 +36,10 @@ public class Helado extends Planeta {
         set_identificador(id);
 
         return;
+    }
+
+    @Override
+    public int caracteristicaPlaneta() {
+        return this.temperatura;
     }
 }

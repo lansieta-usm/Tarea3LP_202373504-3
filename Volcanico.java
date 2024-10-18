@@ -2,10 +2,25 @@ public class Volcanico extends Planeta {
     private int temperatura;
     private int platino;
 
-    public Volcanico(){
+    public Volcanico(){ // Constructor
         super();
         this.temperatura = generarTemperatura();
         setearValores();
+    }
+
+    public int get_temperatura(){ // Getter Temperatura
+        return this.temperatura;
+    }
+    public int get_platino(){ // Getter Platino
+        return this.platino;
+    }
+    public void set_temperatura(int temperature){
+        this.temperatura = temperature; // Setter Temperatura (no se usó en el código final)
+        return;
+    }
+    public void set_platino(int platinum){ // Setter Platino (no se usó en el código final)
+        this.platino = platinum;
+        return;
     }
 
     private int generarTemperatura(){ // Genera una temperatura al azar acorde a los valores entregados en el enunciado
@@ -32,10 +47,8 @@ public class Volcanico extends Planeta {
         return;
     }
 
-    public int get_temperatura(){ // Getter Temperatura
+    @Override
+    public int caracteristicaPlaneta() {
         return this.temperatura;
-    }
-    public int get_platino(){ // Getter Platino
-        return this.platino;
     }
 }

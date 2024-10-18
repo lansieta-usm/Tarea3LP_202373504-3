@@ -3,9 +3,15 @@ import java.util.Scanner;
 public class NoJavaSky {
     public static void main(String args[]){
         Scanner input = new Scanner(System.in);
-        System.out.println("---------------------------------------");
-        System.out.println("¡SIIII PAPUS :v! Esto es NoJavaSky v1.0");
-        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println("¡SIIII PAPUS :v! Esto es:");
+        System.out.println("    _   __          __                  _____ __                 ___ ____ \n" +
+                           "   / | / /___      / /___ __   ______ _/ ___// /____  __   _   _<  // __ \\ \n" +
+                           "  /  |/ / __ \\__  / / __ `/ | / / __ `/\\__ \\/ //_/ / / /  | | / / // / / / \n" +
+                           " / /|  / /_/ / /_/ / /_/ /| |/ / /_/ /___/ / ,< / /_/ /   | |/ / // /_/ /  \n" +
+                           "/_/ |_/\\____/\\____/\\__,_/ |___/\\__,_//____/_/|_|\\__, /    |___/_(_)____/   \n" +
+                           "                                               /____/                      ");
+        System.out.println("---------------------------------------------------------------------------");
         System.out.println("¿Qué te gustaría hacer?");
         System.out.println("1. Nueva Partida");
         System.out.println("2. Breve introducción a NoJavaSky");
@@ -79,6 +85,19 @@ public class NoJavaSky {
                         System.out.println("Tras llegar a "+mapa.planetaActual()+", la energía protectora disponible en el exotraje es "+jugador.get_unidadesEnergiaProteccion());
                         System.out.println();
                         System.out.println("¡Te damos la bienvenida a "+mapa.planetaActual()+"!");
+                        if(mapa.planetaActual().get_identificador().equals("Helado")){
+                            System.out.println("Los sensores de la Nave indican que la temperatura de "+mapa.planetaActual()+" es de "+mapa.planetaActual().caracteristicaPlaneta()+"°C");
+                            System.out.println();
+                        } else if(mapa.planetaActual().get_identificador().equals("Oceanico")){
+                            System.out.println("Los sensores de la Nave han calculado que la profundidad de los mares de "+mapa.planetaActual()+" es de "+mapa.planetaActual().caracteristicaPlaneta()+"mts");
+                            System.out.println();
+                        } else if(mapa.planetaActual().get_identificador().equals("Radiactivo")){
+                            System.out.println("Los sensores de la Nave indican que el nivel de radiación de "+mapa.planetaActual()+" es de "+mapa.planetaActual().caracteristicaPlaneta()+"rad");
+                            System.out.println();
+                        } else{
+                            System.out.println("Los sensores de la Nave indican que la temperatura de "+mapa.planetaActual()+" es de "+mapa.planetaActual().caracteristicaPlaneta()+"°C");
+                            System.out.println();
+                        }
                         while(true){
                             if(jugador.get_unidadesEnergiaProteccion() <= 0){ // Si el jugador sucumbe
                                 System.out.println();
@@ -245,8 +264,8 @@ public class NoJavaSky {
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("-------------------- PUESTO #2 --------------------");
-                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
-                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("Opción 1: +"+mejora3*100+"% de eficiencia de propulsor de la Nave por "+precio3+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora4*100+"% de eficiencia de energía protectora del exotraje por "+precio4+" unidades de Platino");
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("¿A qué puesto te quieres dirigir?");
@@ -345,13 +364,13 @@ public class NoJavaSky {
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("-------------------- PUESTO #2 --------------------");
-                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
-                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("Opción 1: +"+mejora3*100+"% de eficiencia de propulsor de la Nave por "+precio3+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora4*100+"% de eficiencia de energía protectora del exotraje por "+precio4+" unidades de Platino");
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("-------------------- PUESTO #3 --------------------");
-                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
-                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("Opción 1: +"+mejora5*100+"% de eficiencia de propulsor de la Nave por "+precio5+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora6*100+"% de eficiencia de energía protectora del exotraje por "+precio6+" unidades de Platino");
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("¿A qué puesto te quieres dirigir?");
@@ -524,8 +543,8 @@ public class NoJavaSky {
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("-------------------- PUESTO #2 --------------------");
-                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
-                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("Opción 1: +"+mejora3*100+"% de eficiencia de propulsor de la Nave por "+precio3+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora4*100+"% de eficiencia de energía protectora del exotraje por "+precio4+" unidades de Platino");
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("¿A qué puesto te quieres dirigir?");
@@ -624,13 +643,13 @@ public class NoJavaSky {
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("-------------------- PUESTO #2 --------------------");
-                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
-                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("Opción 1: +"+mejora3*100+"% de eficiencia de propulsor de la Nave por "+precio3+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora4*100+"% de eficiencia de energía protectora del exotraje por "+precio4+" unidades de Platino");
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("-------------------- PUESTO #3 --------------------");
-                                                System.out.println("Opción 1: +"+mejora1*100+"% de eficiencia de propulsor de la Nave por "+precio1+" unidades de Uranio");
-                                                System.out.println("Opción 2: +"+mejora2*100+"% de eficiencia de energía protectora del exotraje por "+precio2+" unidades de Platino");
+                                                System.out.println("Opción 1: +"+mejora5*100+"% de eficiencia de propulsor de la Nave por "+precio5+" unidades de Uranio");
+                                                System.out.println("Opción 2: +"+mejora6*100+"% de eficiencia de energía protectora del exotraje por "+precio6+" unidades de Platino");
                                                 System.out.println("---------------------------------------------------");
                                                 System.out.println();
                                                 System.out.println("¿A qué puesto te quieres dirigir?");

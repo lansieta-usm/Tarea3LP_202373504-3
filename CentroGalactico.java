@@ -11,4 +11,9 @@ public class CentroGalactico extends Planeta {
 
         return;
     }
+
+    @Override
+    public int caracteristicaPlaneta() {
+        return 0;
+    }
 }
